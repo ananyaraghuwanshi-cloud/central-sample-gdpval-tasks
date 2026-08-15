@@ -1,0 +1,16 @@
+HarborView Tours Radio Audit Rules
+
+Classify each exact model based on whether it can remain in its current assignment.
+
+Classifications:
+-Approved: official documentation and the provided inventory facts support that the model can remain in its current assignment
+-Not Approved: official documentation or the provided inventory facts show that the model cannot remain in its current assignment
+-Unclear: official documentation or provided inventory facts are insufficient to determine whether the model can remain in its current assignment
+
+Required for “Approved” status:
+-Use only the stock version of the exact model listed
+-Do not substitute sister models, later models, earlier models, bundles, accessories, special editions, or modified versions
+-The stock model must satisfy the requirements that apply to its current assignment and vessel group
+-Handheld radios assigned for outdoor crew, boarding, docking, or helm use must have published water resistance or waterproofing
+-Do not infer unstated vessel facts, installation details, setup details, or configuration changes
+-Classifications must be supported by official manufacturer documentation or official regulatory sources

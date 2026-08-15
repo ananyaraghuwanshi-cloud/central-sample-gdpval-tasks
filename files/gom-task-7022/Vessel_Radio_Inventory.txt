@@ -1,0 +1,49 @@
+HarborView Tours Existing Onboard Radio Inventory
+
+Inventory Entry: T600-SHUTTLE
+Model: Motorola Talkabout T600 H2O
+Current assignment: supplemental crew and boarding radios
+Vessel group: shuttle vessels, 65 ft 7 in
+Inventory note: Waterproof consumer walkie-talkies used for boarding, dockside staff coordination, and passenger-flow tasks.
+
+Inventory Entry: UNIDEN-SHUTTLE
+Model: Uniden MHS75 Handheld VHF Radio
+Current assignment: shuttle helm radios
+Vessel group: shuttle vessels, 65 ft 7 in
+Inventory note: Compact handheld marine radios kept near the shuttle helms.
+
+Inventory Entry: ICOM25-SHUTTLE
+Model: Icom IC-M25 Handheld VHF Radio
+Current assignment: shuttle helm radios
+Vessel group: shuttle vessels, 65 ft 7 in
+Inventory note: Floating handheld marine radios kept near the shuttle helms.
+
+Inventory Entry: UNIDEN-HARBOR
+Model: Uniden MHS75 Handheld VHF Radio
+Current assignment: permanently assigned secondary harbor-tour helm radios
+Vessel group: harbor-tour vessels, 70-84 ft
+Inventory note: Compact handheld marine radios kept in manufacturer charging cradles at the helm.
+
+Inventory Entry: BAOFENG-HARBOR
+Model: BaoFeng BF-F8HP
+Current assignment: harbor-tour helm radios
+Vessel group: harbor-tour vessels, 70-84 ft
+Inventory note: Programmable handheld radios used at the helm. A former technician programmed several local channels.
+
+Inventory Entry: HX890-HARBOR
+Model: Standard Horizon HX890
+Current assignment: permanently assigned secondary harbor-tour helm radios
+Vessel group: harbor-tour vessels, 70-84 ft
+Inventory note: Floating handheld marine radios kept in manufacturer charging cradles at the helm.
+
+Inventory Entry: HX890-UPPER
+Model: Standard Horizon HX890
+Current assignment: permanently assigned upper-deck harbor-tour steering-station radios
+Vessel group: harbor-tour vessels, 70-84 ft
+Inventory note: Floating handheld marine radios kept in manufacturer charging cradles at the upper-deck steering station.
+
+Inventory Entry: ICOM94-UPPER
+Model: Icom IC-M94D Handheld VHF Radio
+Current assignment: permanently assigned upper-deck harbor-tour steering-station radios
+Vessel group: harbor-tour vessels, 70-84 ft
+Inventory note: Handheld marine radios kept in manufacturer charging cradles at the upper-deck steering station.
