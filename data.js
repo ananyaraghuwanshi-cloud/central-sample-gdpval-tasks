@@ -1918,47 +1918,40 @@ You will also produce a PDF file that is titled Articles_Final.pdf, which provid
 All rewrites must be publish-ready and adhere to AP-style conventions for punctuation, photos, and abbreviations, and use title case for headlines. Articles should be 600-900 words. Each provided source article must be used exactly once, and each provided image file must be used exactly once.`,
     },
     {
-      id: "nar-prompt-5724",
-      taskName: "5724",
+      id: "nar-prompt-5728",
+      taskName: "5728",
       promptText:
-`You are a reporter for a regional Indiana newspaper covering public universities, institutional governance, student protest controversies, and administrative transparency.
+`You are a reporter for a regional newspaper in Indiana covering local government, community affairs, and public accountability. Your editor has assigned you to produce an investigative accountability feature regarding the Town of Yorktown's proposal to replace the long-standing tiger mural on the community water tower with a new municipal branding design.
 
-Your editor has assigned you to reconstruct the most defensible timeline surrounding Ball State University’s internal response to a controversial student protest incident that triggered administrative concern, donor complaints, public criticism, and allegations of retaliatory institutional behavior.
+The controversy emerged after residents objected to the proposed redesign, arguing that the tiger mural had become a widely recognized symbol of local identity, community history, and school pride. Town officials maintained that the project was intended to modernize the town's branding and improve the appearance of public infrastructure.
 
-Use the supplied source materials:
-BSU Context.docx - as situational context
-BallState_Conduct_Records_and_Student_Timeline.docx - for conduct and student timeline records
-BallState_Donor_Emails_and_Scheduling_Logs.docx - for donor emails and scheduling logs
-BallState_Draft_Statement_Version_History.docx - for the draft statement version history
-BallState_Slack_Export_and_Metadata_Notes.docx - for Slack export and metadata history
+Use the following sources:
+- Yorktown_Tiger_Water_Tower_Controversy.docx - for reaction context
+- Yorktown_Tiger_Water_Tower_Context_Packet.docx - for situational and historical context
+- Yorktown_Public_Engagement_Summary.docx - for a summary on the request and integration of public engagement in decision-making
+- Yorktown_Municipal_Branding.docx - for branding considerations in decision-making
 
-1. Your task is to determine:
-- what can be chronologically verified,
-- where institutional explanations materially changed over time,
-- whether public statements align with internal communications,
-- and which conclusions remain unsupported by the available evidence.
+Complete the reporting using information available as of June 14, 2026.
 
-2. Include:
-- a reconstructed investigative timeline,
-- an analysis on chronological contradictions and evidentiary gaps,
-- and an assessment explaining the most defensible interpretation of the timeline evidence.
+Output:
+Filename: Yorktown_Tiger_Water_Tower_Accountability_Feature.pdf
 
-3. Evaluate:
-- whether Ball State University’s public explanation remained internally consistent over time,
-- whether reputational, donor, or political concerns have influenced administrative behavior,
-- whether chronology alone supports claims of retaliation,
-- and whether evolving institutional messaging itself became a legitimate accountability issue independent of proven misconduct.
+Length:
+2,500 to 4,000 words total
 
-4. Determine whether the strongest supported conclusion is (only one of the following):
-- a verified retaliation story,
-- an institutional transparency and credibility story,
-- a reputational management and administrative optics story,
-- or a politically amplified controversy with incomplete evidence.
+1. Determine the primary source of the controversy and assess the competing concerns raised by residents and town officials.
 
-Complete the reporting using information available as of June 9, 2026.
+2. Explain the significance of the tiger mural within the community, the rationale offered for the proposed redesign, and the reasons public opposition emerged.
 
-Output: Filename: BallState_Administrative_Response_Timeline_Assessment.docx
-Length: 4,000 to 6,000 words total`,
+3. Assess whether the available evidence supports concerns regarding community identity, civic symbolism, public engagement, historical preservation, and municipal priorities.
+
+4. Distinguish between verified town actions, resident concerns, public allegations, historical significance claims, media characterizations, and official explanations.
+
+5. Identify areas where evidence is clear, where competing interpretations exist, and where important questions are unresolved.
+
+6. Assess how town officials communicated the proposal, responded to public concerns, and addressed community feedback throughout the controversy.
+
+7. Explain what the dispute reveals about the relationship between civic symbols, local identity, public sentiment, and municipal decision-making.`,
     },
   ],
   "Nurse Practitioners": [
@@ -2035,107 +2028,28 @@ When discussing medications, lab findings, imaging results, clinical timelines, 
   ],
   "Medical and Health Services Managers": [
     {
-      id: "mhsm-prompt-6354",
-      taskName: "6354",
+      id: "mhsm-prompt-6363",
+      taskName: "6363",
       promptText:
-`You are the Vice President of Quality and Patient Safety for an acute care hospital in Florida.  A physician-related complaint and peer review referral have been initiated following the death of a patient after cardiac catheterization. The Chief Medical Officer has requested an executive assessment to determine whether the available evidence supports concerns regarding the standard of care, peer review, professional practice evaluation, or physician privileging.
+`You are the Global Health Initiative (GHI) Director at a New York State University, overseeing the implementation of a global health project in an underserved community. The population is composed of individuals living near the poverty line, where unemployment and injectable drug use are prevalent. The GHI provides support for screening of transmissible diseases posing a risk to this population, while supporting medical education. 
 
-You are provided with the following files:
--	Medical_Record_Review.docx
-Contains a chronological summary of the patient's clinical course from Emergency Department presentation through death, including key assessments, interventions, physician involvement, diagnostic findings, escalation of care, and documented outcomes.
--	Family_Complaint_Letter.docx
-Contains the patient's spouse's written complaint, including concerns about the procedure, clinical response, communication, and overall care.
--	Staff_Statements.docx
-Contains initial statements collected from staff involved in the patient's care, including physician and nursing perspectives regarding the events under review.
--	Peer_Review_and_FPPE_Policies.docx
-Contains hospital policy requirements governing peer review, focused professional practice evaluation (FPPE), and practitioner performance review activities.
--	OPPE_Summary.docx
-Contains the physician's most recent ongoing professional practice evaluation (OPPE) summary, including performance metrics, procedural volume, STEMI quality indicators, peer review history, and any identified practitioner concerns.
--	Credentialing_Privileging_Summary.docx
-Contains the physician's credentialing, privileging, appointment, disciplinary, professional standing, and committee review history information.
+You are tasked with informing the Medical School Dean of decisions concerning research conduct. Conduct your analysis as of July 3, 2026. 
 
-Using only the information contained within the files provided, prepare two output files: 
+You have been provided the following files as references:
+- Clinic_Specimen_Details.xlsx - Database of demographics and test results
+- Rapid_Test_Inventory.docx - Initial inventory of available tests for the project
+- Synthesis_Tests.docx - Updated inventory introduced by the Vice-Dean
+- CDC_Molecular_Epidemiology.pdf - Description of ethical issues in molecular epidemiology
 
-Output file 1 named: Physician_Peer_Review_Executive_Assessment.docx
+Create a single Excel workbook titled Project_Global_Health_2026.xlsx to:
 
-Complete the following tasks:
-1. Standard of Care Assessment
-Determine whether the available evidence supports:
-- Standard of Care Met
-- Standard of Care Not Established
-- Standard of Care Deviation Supported
-Provide a detailed rationale that references specific evidence from the record.
+1- Determine whether the data analysis represents human subject research under the National Institute of Health (NIH) policies, given that the research data were collected during routine care. 
 
-2. Complaint Allegation Assessment
-Evaluate the following allegations:
-- The procedure should not have been performed (Complaint A)
-- The physician failed to recognize deterioration in a timely manner (Complaint B)
-- The physician failed to manage the complication appropriately (Complaint C)
-- The physician should be subject to additional professional review (Complaint D)
-For each allegation, determine whether it is:
-- Supported
-- Not Supported
-- Indeterminate
-Provide supporting rationale.
+2- List a single characteristic of this research project that satisfies the qualifications for exemption from standard Institutional Review Board review, only if the project represents human subject research.   
 
-3. Peer Review Assessment
-Determine whether the available evidence supports:
-- No Peer Review Concern
-- Peer Review Concern
-- Significant Peer Review Concern
-Explain how the determination aligns with the hospital's peer review policy.
+3- Write a 5-point plan to incentivize patients of the same social and demographic characteristics to participate in the study, only if the project represents human subject research and qualifies for exemption.  
 
-4. Professional Practice Evaluation Assessment
-Determine whether the available evidence supports:
-- No Action
-- Continued Routine OPPE Monitoring
-- FPPE Recommendation
-Explain how the determination aligns with the hospital's FPPE policy and available practitioner performance information.
-
-5. Privileging Assessment
-Determine whether the available evidence supports:
-- No Privileging Concern
-- Indeterminate Privileging Concern
-- Privileging Concern Supported
-Explain how the determination aligns with the Medical Staff Bylaws and available practitioner performance information.
-
-6. Executive Recommendation
-Prepare an executive recommendation to the Chief Medical Officer summarizing:
-- Key evidence
-- Standard of care determination
-- Peer review determination
-- Professional practice evaluation recommendation
-- Privileging determination
-- Any recommended corrective actions
-Use formal language appropriate for an executive healthcare leadership review.
-
-Output file 2 titled: MEC_Physician_Performance_Review_Presentation.pptx
-
-Create a Medical Executive Committee Presentation consisting of 10 slides. 
-Include the following sections:
-Slide 1 - Case Overview
-Slide 2- Clinical Timeline Summary
-Slide 3 - Key Evidence Reviewed
-Slide 4 - Standard of Care Determination
-Slide 5 - Complaint Allegation Determinations
-Slide 6 - Peer Review Determination
-Slide 7 - Professional Practice Evaluation Determination
-Slide 8 - Privileging Determination
-Slide 9 - Recommended Actions
-Slide 10 - Final Recommendation to MEC
-
-The presentation should:
-- Present conclusions consistent with the Executive Assessment.
-- Summarize only the evidence contained within the files provided.
-- Use professional language appropriate for Medical Executive Committee review.
-
-Restrictions:
-- Use only information contained within the files provided.
-- Do not assume facts that are not documented.
-- Base all determinations and recommendations on the available evidence and applicable policy requirements.
-- Ensure conclusions presented in the PowerPoint remain consistent with the Executive Assessment in Physician_Peer_Review_Executive_Assessment.docx.
-- Use formal language appropriate for executive healthcare leadership review.
-- Conduct your analysis as of June 1, 2026 and list this date in the outputs.`,
+4- Determine whether the University can exercise ownership of the specimens for future genomic research in regards to any federal regulations.`,
     },
     {
       id: "mhsm-prompt-9587",
