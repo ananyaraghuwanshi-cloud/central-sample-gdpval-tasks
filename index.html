@@ -256,6 +256,42 @@
 
   .table-scroll { overflow-x: auto; }
 
+  .sidebar-divider { height: 1px; background: var(--border); margin: 14px 4px; }
+
+  /* ---------- Overview page ---------- */
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--indigo); text-transform: uppercase; margin: 0 0 8px; }
+  .overview-lede { font-size: 15px; line-height: 1.7; color: var(--text-muted); margin: 0 0 28px; }
+  .overview-lede b { color: var(--text); font-weight: 600; }
+
+  .anatomy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .anatomy-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; background: var(--bg-muted); }
+  .anatomy-card .anatomy-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--indigo-light); color: var(--indigo); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .anatomy-card h3 { margin: 0 0 6px; font-size: 14.5px; font-weight: 700; font-family: var(--font); }
+  .anatomy-card p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--text-muted); }
+
+  .caveat { display: flex; gap: 14px; background: #fee2e2; border: 1px solid #fecaca; border-radius: 10px; padding: 18px 20px; margin: 16px 0 8px; }
+  .caveat .caveat-icon { width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0; background: #fecaca; color: #b91c1c; display: flex; align-items: center; justify-content: center; }
+  .caveat h3 { margin: 2px 0 6px; font-size: 15.5px; font-weight: 700; color: #b91c1c; font-family: var(--font); }
+  .caveat p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.65; color: #7f1d1d; }
+  .caveat p:last-child { margin-bottom: 0; }
+  .caveat a { color: #b91c1c; font-weight: 600; text-decoration: underline; text-decoration-color: #f3a5a5; text-underline-offset: 2px; }
+  .caveat a:hover { text-decoration-color: #b91c1c; }
+
+  .domain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .domain-chip { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 13.5px; cursor: pointer; }
+  .domain-chip:hover { border-color: var(--indigo); }
+  .domain-chip .domain-icon { color: var(--indigo); opacity: 1; }
+  .domain-chip .name { flex: 1; min-width: 0; }
+  .domain-chip .counts { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+
+  .cta-row { display: flex; gap: 12px; margin: 28px 0 4px; }
+  .cta-primary { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; padding: 11px 18px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: var(--indigo); color: white; }
+  .cta-primary:hover { background: var(--indigo-bright); }
+
+  @media (max-width: 820px) {
+    .anatomy-grid, .domain-grid { grid-template-columns: 1fr; }
+  }
+
   #backToTop {
     position: fixed;
     bottom: 28px;
@@ -346,15 +382,88 @@ function domainIconSvg(name) {
   return `<svg class="domain-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 }
 
-function renderSidebar(activeDomain) {
+function renderSidebar(active) {
   const el = document.getElementById("sidebar");
-  el.innerHTML = `<div class="sidebar-label">DOMAINS</div>` + DOMAIN_NAMES.map((name) => {
-    const active = name === activeDomain ? "active" : "";
-    return `<div class="domain-link ${active}" data-action="domain" data-domain="${escapeHtml(name)}">
+  const overviewActive = active === "overview" ? "active" : "";
+  const overviewHtml = `<div class="domain-link ${overviewActive}" data-action="overview">
+      <span>Overview</span>
+    </div>
+    <div class="sidebar-divider"></div>`;
+  el.innerHTML = overviewHtml + `<div class="sidebar-label">DOMAINS</div>` + DOMAIN_NAMES.map((name) => {
+    const isActive = name === active ? "active" : "";
+    return `<div class="domain-link ${isActive}" data-action="domain" data-domain="${escapeHtml(name)}">
       ${domainIconSvg(name)}
       <span>${escapeHtml(name)}</span>
     </div>`;
   }).join("");
+}
+
+function renderOverviewView() {
+  renderSidebar("overview");
+  const main = document.getElementById("main");
+  const firstDomain = DOMAIN_NAMES[0];
+
+  const domainGridHtml = DOMAIN_NAMES.map((name) => `
+    <div class="domain-chip" data-action="domain" data-domain="${escapeHtml(name)}" data-tab="full">
+      ${domainIconSvg(name)}
+      <span class="name">${escapeHtml(name)}</span>
+      <span class="counts">${getTasks(name).length} full · ${getPrompts(name).length} prompts</span>
+    </div>
+  `).join("");
+
+  main.innerHTML = `
+    <p class="eyebrow">Getting started</p>
+    <h2 class="domain-title">What's on this dashboard</h2>
+    <p class="overview-lede">
+      Here is a library of real example tasks. Each section will have 2 full task examples
+      and 3 prompt examples. Find your domain and look at what a strong task, golden solution,
+      and rubric actually look like before you write your own! Feel free to browse other
+      domains as well. Happy tasking!
+    </p>
+
+    <div class="section-label">⚠ BEFORE YOU MODEL A TASK ON ONE YOU SEE HERE</div>
+    <div class="caveat">
+      <div class="caveat-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5l7 12.5H1L8 1.5z"/><line x1="8" y1="6" x2="8" y2="9.5"/><circle cx="8" cy="11.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div>
+        <h3>Format requirements vary from project to project</h3>
+        <p>
+          While these are great examples of high-quality tasks, note that the format
+          requirements for a task evolves from project to project. There are some formatting
+          and content guidelines unique to this version of Project Balboa. Please read through
+          our <a href="https://docs.google.com/document/d/1L7O_GrXwQ2kn67oFxtwa2AGm3B5XVSrKXHY17bXeMJk/edit?tab=t.4n4o57aq9gyx" target="_blank" rel="noopener">Instruction Guidelines</a>
+          to see a full list of what formatting and content guidelines apply.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-label">WHAT A TASK IS MADE OF</div>
+    <div class="anatomy-grid">
+      <div class="anatomy-card">
+        <div class="anatomy-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2" width="11" height="12" rx="1"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg></div>
+        <h3>Prompt</h3>
+        <p>A prompt is the question or instruction you hand the model. In our project, it has one job beyond getting an answer: to test the limits of the model's reasoning and reveal where it falls short.</p>
+      </div>
+      <div class="anatomy-card">
+        <div class="anatomy-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg></div>
+        <h3>Golden solution</h3>
+        <p>After your prompt is approved, you build the golden solution: the ideal answer a strong professional would produce. The golden solution is the expert-written answer that serves as the ground truth for your prompt.</p>
+      </div>
+      <div class="anatomy-card">
+        <div class="anatomy-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="4" x2="13" y2="4"/><line x1="3" y1="8" x2="13" y2="8"/><line x1="3" y1="12" x2="9" y2="12"/></svg></div>
+        <h3>Rubric</h3>
+        <p>The rubric is how any valid solution to your prompt gets graded. A rubric is a structured list of criteria used to grade a response. For this project, we are looking for a set of 20 to 50 objective, verifiable criteria that can fairly grade any valid solution (not just your own!)</p>
+      </div>
+    </div>
+
+    <div class="section-label">BROWSE BY DOMAIN</div>
+    <div class="domain-grid">${domainGridHtml}</div>
+
+    <div class="cta-row">
+      <span class="cta-primary" data-action="domain" data-domain="${escapeHtml(firstDomain)}" data-tab="full">Start with ${escapeHtml(firstDomain)} &rarr;</span>
+    </div>
+  `;
 }
 
 function navigateDomain(name, tab) {
@@ -496,14 +605,16 @@ function router() {
   } else if (parts[0] === "domain" && parts[1]) {
     renderDomainView(decodeURIComponent(parts[1]), parts[2] || "full");
   } else {
-    renderDomainView(DOMAIN_NAMES[0], "full");
+    renderOverviewView();
   }
 }
 
 document.addEventListener("click", (e) => {
   const el = e.target.closest("[data-action]");
   if (!el) return;
-  if (el.dataset.action === "domain") {
+  if (el.dataset.action === "overview") {
+    window.location.hash = "#overview";
+  } else if (el.dataset.action === "domain") {
     navigateDomain(el.dataset.domain, el.dataset.tab);
   } else if (el.dataset.action === "task") {
     window.location.hash = "#task/" + el.dataset.taskId;
